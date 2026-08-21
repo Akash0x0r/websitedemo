@@ -22,6 +22,7 @@ export default function RequestAssessmentPage() {
 
   const [submitted, setSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [refId, setRefId] = useState('');
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -31,13 +32,32 @@ export default function RequestAssessmentPage() {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    setTimeout(() => {
+
+    try {
+      // 1. Try sending to Netlify Serverless Function
+      const response = await fetch('/.netlify/functions/submit-assessment', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
+      });
+
+      if (response.ok) {
+        const resData = await response.json();
+        setRefId(resData.referenceId || `SEC-${Date.now().toString(36).toUpperCase()}`);
+      } else {
+        // Fallback reference ID for local testing or Netlify Forms direct post
+        setRefId(`SEC-${Date.now().toString(36).toUpperCase()}`);
+      }
+    } catch (err) {
+      // Offline / dev fallback
+      setRefId(`SEC-${Date.now().toString(36).toUpperCase()}`);
+    } finally {
       setIsSubmitting(false);
       setSubmitted(true);
-    }, 800);
+    }
   };
 
   const breadcrumbItems = [
@@ -96,7 +116,8 @@ export default function RequestAssessmentPage() {
                       Thank you, <strong className="text-brand-navy">{formData.fullName}</strong>. A dedicated offensive security lead has been assigned to <strong className="text-brand-navy">{formData.companyName || 'your organization'}</strong>.
                     </p>
 
-                    <div className="p-4 rounded-lg bg-brand-off-white border border-brand-navy/10 text-xs font-mono text-brand-navy text-left max-w-md mx-auto space-y-1">
+                    <div className="p-4 rounded-lg bg-brand-off-white border border-brand-navy/10 text-xs font-mono text-brand-navy text-left max-w-md mx-auto space-y-1.5">
+                      {refId && <div><strong>Reference ID:</strong> <span className="text-brand-blue-deep font-bold">{refId}</span></div>}
                       <div><strong>Primary Domain:</strong> {formData.primaryService}</div>
                       <div><strong>Target Environment:</strong> {formData.targetEnvironment}</div>
                       <div><strong>SLA Guarantee:</strong> Response within 24 business hours</div>
@@ -114,8 +135,15 @@ export default function RequestAssessmentPage() {
                     </div>
                   </div>
                 ) : (
-                  <form onSubmit={handleSubmit} className="space-y-6">
-                    
+                  <form 
+                    onSubmit={handleSubmit} 
+                    name="assessment-request"
+                    data-netlify="true"
+                    className="space-y-6"
+                  >
+                    {/* Hidden input for Netlify forms bots detection */}
+                    <input type="hidden" name="form-name" value="assessment-request" />
+
                     <div className="pb-4 border-b border-brand-navy/10">
                       <h2 className="font-display font-extrabold text-xl uppercase tracking-tight text-brand-navy">
                         1. Target & Assessment Details
@@ -291,7 +319,7 @@ export default function RequestAssessmentPage() {
                         className="w-full py-4 px-6 rounded-lg bg-brand-navy text-brand-white font-display font-extrabold text-sm uppercase tracking-wider hover:bg-brand-navy-mid transition-all duration-200 shadow-md flex items-center justify-center gap-2 group disabled:opacity-50"
                       >
                         {isSubmitting ? (
-                          <span>Processing Request...</span>
+                          <span>Dispatching Scoping Details...</span>
                         ) : (
                           <>
                             <span>Request Formal Assessment Scope</span>

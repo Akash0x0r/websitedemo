@@ -66,26 +66,26 @@ export default function RequestAssessmentPage() {
   ];
 
   return (
-    <div className="w-full pt-28">
+    <div className="w-full pt-24 sm:pt-28">
       
-      {/* Top Scoping Header */}
-      <section className="bg-brand-navy-deep border-b border-brand-navy-border py-12 md:py-16 relative overflow-hidden">
-        <div className="absolute inset-0 cyber-grid opacity-20 pointer-events-none" />
+      {/* Top Scoping Header (Light Canvas) */}
+      <section className="bg-brand-off-white border-b border-brand-navy/10 py-12 md:py-16 relative overflow-hidden">
+        <div className="absolute inset-0 cyber-grid-light opacity-50 pointer-events-none" />
         
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Breadcrumb items={breadcrumbItems} lightMode={false} />
+          <Breadcrumb items={breadcrumbItems} lightMode={true} />
 
           <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-navy-mid border border-brand-blue/30 text-xs font-mono font-bold text-brand-blue uppercase tracking-widest mb-4">
-              <ShieldCheck className="w-4 h-4" />
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-brand-navy/15 text-xs font-mono font-bold text-brand-navy uppercase tracking-widest mb-4 shadow-sm">
+              <ShieldCheck className="w-4 h-4 text-brand-blue" />
               <span>CONFIDENTIAL SCOPING & PROPOSAL REQUEST</span>
             </div>
 
-            <h1 className="uv-heading text-4xl sm:text-5xl md:text-6xl font-black text-brand-white uppercase mb-4 leading-tight">
+            <h1 className="uv-heading text-4xl sm:text-5xl md:text-6xl font-bold text-brand-navy uppercase mb-4 leading-tight">
               REQUEST SECURITY ASSESSMENT
             </h1>
 
-            <p className="text-base sm:text-lg text-brand-white-muted leading-relaxed font-normal">
+            <p className="text-base sm:text-lg text-brand-navy/80 leading-relaxed font-normal">
               Provide your assessment requirements below. Our principal offensive security researchers will prepare a custom Scope of Work (SoW), timeline, and mutual NDA within 24 hours.
             </p>
           </div>
@@ -93,30 +93,30 @@ export default function RequestAssessmentPage() {
       </section>
 
       {/* Split Layout: Left = Scoping Form / Right = Trust & Contact Info */}
-      <section className="py-20 md:py-28 bg-brand-navy relative">
+      <section className="py-20 md:py-28 bg-brand-white relative text-brand-navy">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
             
             {/* LEFT COLUMN: Interactive Assessment Form (7 Cols) */}
             <div className="lg:col-span-7">
-              <div className="bg-brand-white text-brand-navy p-8 sm:p-10 rounded-2xl shadow-2xl border border-brand-navy/10">
+              <div className="bg-brand-off-white text-brand-navy p-8 sm:p-10 rounded-2xl shadow-sm border border-brand-navy/15">
                 
                 {submitted ? (
                   <div className="py-12 text-center space-y-6 animate-in fade-in duration-300">
-                    <div className="w-16 h-16 bg-brand-navy text-brand-blue rounded-full flex items-center justify-center mx-auto shadow-glow-sm">
+                    <div className="w-16 h-16 bg-brand-navy text-brand-blue rounded-full flex items-center justify-center mx-auto shadow-sm">
                       <CheckCircle2 className="w-8 h-8" />
                     </div>
 
-                    <h2 className="uv-heading text-3xl font-extrabold text-brand-navy uppercase">
+                    <h2 className="uv-heading text-3xl font-bold text-brand-navy uppercase">
                       Scoping Request Received
                     </h2>
 
-                    <p className="text-sm text-brand-navy-mid max-w-md mx-auto leading-relaxed">
+                    <p className="text-sm text-brand-navy/85 max-w-md mx-auto leading-relaxed">
                       Thank you, <strong className="text-brand-navy">{formData.fullName}</strong>. A dedicated offensive security lead has been assigned to <strong className="text-brand-navy">{formData.companyName || 'your organization'}</strong>.
                     </p>
 
-                    <div className="p-4 rounded-lg bg-brand-off-white border border-brand-navy/10 text-xs font-mono text-brand-navy text-left max-w-md mx-auto space-y-1.5">
+                    <div className="p-4 rounded-lg bg-white border border-brand-navy/10 text-xs font-mono text-brand-navy text-left max-w-md mx-auto space-y-1.5 shadow-sm">
                       {refId && <div><strong>Reference ID:</strong> <span className="text-brand-blue-deep font-bold">{refId}</span></div>}
                       <div><strong>Primary Domain:</strong> {formData.primaryService}</div>
                       <div><strong>Target Environment:</strong> {formData.targetEnvironment}</div>
@@ -145,10 +145,10 @@ export default function RequestAssessmentPage() {
                     <input type="hidden" name="form-name" value="assessment-request" />
 
                     <div className="pb-4 border-b border-brand-navy/10">
-                      <h2 className="font-display font-extrabold text-xl uppercase tracking-tight text-brand-navy">
+                      <h2 className="font-display font-bold text-xl uppercase tracking-tight text-brand-navy">
                         1. Target & Assessment Details
                       </h2>
-                      <p className="text-xs text-brand-navy-mid/70 mt-1">
+                      <p className="text-xs text-brand-navy/70 mt-1">
                         Select the primary security discipline and target timeline.
                       </p>
                     </div>
@@ -163,7 +163,7 @@ export default function RequestAssessmentPage() {
                         value={formData.primaryService}
                         onChange={handleChange}
                         required
-                        className="w-full px-4 py-3 bg-brand-off-white border border-brand-navy/20 rounded-lg text-sm text-brand-navy focus:border-brand-blue focus:outline-none focus:ring-2 focus:ring-brand-blue/20"
+                        className="w-full px-4 py-3 bg-white border border-brand-navy/20 rounded-lg text-sm text-brand-navy focus:border-brand-blue focus:outline-none focus:ring-2 focus:ring-brand-blue/20 shadow-sm"
                       >
                         {SERVICES_DATA.map((s) => (
                           <option key={s.id} value={s.id}>
@@ -183,7 +183,7 @@ export default function RequestAssessmentPage() {
                           name="targetEnvironment"
                           value={formData.targetEnvironment}
                           onChange={handleChange}
-                          className="w-full px-4 py-3 bg-brand-off-white border border-brand-navy/20 rounded-lg text-sm text-brand-navy focus:border-brand-blue focus:outline-none focus:ring-2 focus:ring-brand-blue/20"
+                          className="w-full px-4 py-3 bg-white border border-brand-navy/20 rounded-lg text-sm text-brand-navy focus:border-brand-blue focus:outline-none focus:ring-2 focus:ring-brand-blue/20 shadow-sm"
                         >
                           <option value="production">Production Environment (Zero Downtime)</option>
                           <option value="staging">Staging / UAT Environment</option>
@@ -200,7 +200,7 @@ export default function RequestAssessmentPage() {
                           name="timeline"
                           value={formData.timeline}
                           onChange={handleChange}
-                          className="w-full px-4 py-3 bg-brand-off-white border border-brand-navy/20 rounded-lg text-sm text-brand-navy focus:border-brand-blue focus:outline-none focus:ring-2 focus:ring-brand-blue/20"
+                          className="w-full px-4 py-3 bg-white border border-brand-navy/20 rounded-lg text-sm text-brand-navy focus:border-brand-blue focus:outline-none focus:ring-2 focus:ring-brand-blue/20 shadow-sm"
                         >
                           <option value="immediate">Immediate / Urgent (&lt; 48 Hours)</option>
                           <option value="within-2-weeks">Within 1–2 Weeks</option>
@@ -211,7 +211,7 @@ export default function RequestAssessmentPage() {
                     </div>
 
                     <div className="pt-4 pb-2 border-b border-brand-navy/10">
-                      <h2 className="font-display font-extrabold text-xl uppercase tracking-tight text-brand-navy">
+                      <h2 className="font-display font-bold text-xl uppercase tracking-tight text-brand-navy">
                         2. Contact & Organization Information
                       </h2>
                     </div>
@@ -229,7 +229,7 @@ export default function RequestAssessmentPage() {
                           value={formData.fullName}
                           onChange={handleChange}
                           placeholder="e.g. Elena Rostova"
-                          className="w-full px-4 py-3 bg-brand-off-white border border-brand-navy/20 rounded-lg text-sm text-brand-navy placeholder:text-brand-navy-mid/40 focus:border-brand-blue focus:outline-none focus:ring-2 focus:ring-brand-blue/20"
+                          className="w-full px-4 py-3 bg-white border border-brand-navy/20 rounded-lg text-sm text-brand-navy placeholder:text-brand-navy/40 focus:border-brand-blue focus:outline-none focus:ring-2 focus:ring-brand-blue/20 shadow-sm"
                         />
                       </div>
 
@@ -244,7 +244,7 @@ export default function RequestAssessmentPage() {
                           value={formData.workEmail}
                           onChange={handleChange}
                           placeholder="elena@company.com"
-                          className="w-full px-4 py-3 bg-brand-off-white border border-brand-navy/20 rounded-lg text-sm text-brand-navy placeholder:text-brand-navy-mid/40 focus:border-brand-blue focus:outline-none focus:ring-2 focus:ring-brand-blue/20"
+                          className="w-full px-4 py-3 bg-white border border-brand-navy/20 rounded-lg text-sm text-brand-navy placeholder:text-brand-navy/40 focus:border-brand-blue focus:outline-none focus:ring-2 focus:ring-brand-blue/20 shadow-sm"
                         />
                       </div>
                     </div>
@@ -262,7 +262,7 @@ export default function RequestAssessmentPage() {
                           value={formData.companyName}
                           onChange={handleChange}
                           placeholder="Acme Corp"
-                          className="w-full px-4 py-3 bg-brand-off-white border border-brand-navy/20 rounded-lg text-sm text-brand-navy placeholder:text-brand-navy-mid/40 focus:border-brand-blue focus:outline-none focus:ring-2 focus:ring-brand-blue/20"
+                          className="w-full px-4 py-3 bg-white border border-brand-navy/20 rounded-lg text-sm text-brand-navy placeholder:text-brand-navy/40 focus:border-brand-blue focus:outline-none focus:ring-2 focus:ring-brand-blue/20 shadow-sm"
                         />
                       </div>
 
@@ -276,7 +276,7 @@ export default function RequestAssessmentPage() {
                           value={formData.phoneNumber}
                           onChange={handleChange}
                           placeholder="+1 (555) 019-2834"
-                          className="w-full px-4 py-3 bg-brand-off-white border border-brand-navy/20 rounded-lg text-sm text-brand-navy placeholder:text-brand-navy-mid/40 focus:border-brand-blue focus:outline-none focus:ring-2 focus:ring-brand-blue/20"
+                          className="w-full px-4 py-3 bg-white border border-brand-navy/20 rounded-lg text-sm text-brand-navy placeholder:text-brand-navy/40 focus:border-brand-blue focus:outline-none focus:ring-2 focus:ring-brand-blue/20 shadow-sm"
                         />
                       </div>
                     </div>
@@ -292,12 +292,12 @@ export default function RequestAssessmentPage() {
                         value={formData.message}
                         onChange={handleChange}
                         placeholder="Please share number of endpoints, IP ranges, tech stack, compliance targets (SOC 2, ISO 27001, PCI DSS), or specific threat concerns..."
-                        className="w-full px-4 py-3 bg-brand-off-white border border-brand-navy/20 rounded-lg text-sm text-brand-navy placeholder:text-brand-navy-mid/40 focus:border-brand-blue focus:outline-none focus:ring-2 focus:ring-brand-blue/20"
+                        className="w-full px-4 py-3 bg-white border border-brand-navy/20 rounded-lg text-sm text-brand-navy placeholder:text-brand-navy/40 focus:border-brand-blue focus:outline-none focus:ring-2 focus:ring-brand-blue/20 shadow-sm"
                       />
                     </div>
 
                     {/* NDA Checkbox */}
-                    <div className="flex items-center gap-3 p-3 rounded-lg bg-brand-off-white border border-brand-navy/10">
+                    <div className="flex items-center gap-3 p-3 rounded-lg bg-white border border-brand-navy/10 shadow-sm">
                       <input
                         type="checkbox"
                         id="ndaRequired"
@@ -316,7 +316,7 @@ export default function RequestAssessmentPage() {
                       <button
                         type="submit"
                         disabled={isSubmitting}
-                        className="w-full py-4 px-6 rounded-lg bg-brand-navy text-brand-white font-display font-extrabold text-sm uppercase tracking-wider hover:bg-brand-navy-mid transition-all duration-200 shadow-md flex items-center justify-center gap-2 group disabled:opacity-50"
+                        className="w-full py-4 px-6 rounded-lg bg-brand-blue-light text-brand-navy-deep border border-brand-blue-light font-display font-bold text-sm uppercase tracking-wider hover:bg-brand-navy hover:text-white hover:border-brand-navy transition-all duration-200 shadow-sm flex items-center justify-center gap-2 group disabled:opacity-50 min-h-[44px]"
                       >
                         {isSubmitting ? (
                           <span>Dispatching Scoping Details...</span>
@@ -339,64 +339,64 @@ export default function RequestAssessmentPage() {
             <div className="lg:col-span-5 space-y-6">
               
               {/* Trust Box */}
-              <div className="navy-glass-card p-8 rounded-2xl border border-brand-blue/40 shadow-glow-sm">
-                <div className="flex items-center gap-2 text-xs font-mono text-brand-blue font-bold uppercase tracking-widest mb-6">
+              <div className="bg-brand-off-white p-8 rounded-2xl border border-brand-navy/15 shadow-sm">
+                <div className="flex items-center gap-2 text-xs font-mono text-brand-navy font-bold uppercase tracking-widest mb-6">
                   <ShieldCheck className="w-5 h-5 text-brand-blue" />
                   <span>GUARANTEED ENGAGEMENT STANDARDS</span>
                 </div>
 
                 <div className="space-y-6">
                   <div className="flex items-start gap-4">
-                    <div className="w-8 h-8 rounded-lg bg-brand-navy-mid border border-brand-blue/30 flex items-center justify-center text-brand-blue flex-shrink-0">
+                    <div className="w-8 h-8 rounded-lg bg-brand-navy text-brand-blue flex items-center justify-center flex-shrink-0 shadow-sm">
                       <Clock className="w-4 h-4" />
                     </div>
                     <div>
-                      <h3 className="font-display font-bold text-sm text-brand-white uppercase mb-1">
+                      <h3 className="font-display font-bold text-sm text-brand-navy uppercase mb-1">
                         24-Hour Scoping SLA
                       </h3>
-                      <p className="text-xs text-brand-white-muted leading-relaxed font-sans">
+                      <p className="text-xs text-brand-navy/80 leading-relaxed font-sans">
                         Receive a comprehensive Scope of Work, timeline estimation, and pricing framework within one business day.
                       </p>
                     </div>
                   </div>
 
                   <div className="flex items-start gap-4">
-                    <div className="w-8 h-8 rounded-lg bg-brand-navy-mid border border-brand-blue/30 flex items-center justify-center text-brand-blue flex-shrink-0">
+                    <div className="w-8 h-8 rounded-lg bg-brand-navy text-brand-blue flex items-center justify-center flex-shrink-0 shadow-sm">
                       <Lock className="w-4 h-4" />
                     </div>
                     <div>
-                      <h3 className="font-display font-bold text-sm text-brand-white uppercase mb-1">
+                      <h3 className="font-display font-bold text-sm text-brand-navy uppercase mb-1">
                         Strict Mutual NDA
                       </h3>
-                      <p className="text-xs text-brand-white-muted leading-relaxed font-sans">
+                      <p className="text-xs text-brand-navy/80 leading-relaxed font-sans">
                         All communications and architectural disclosures are strictly protected under mutual confidentiality covenants.
                       </p>
                     </div>
                   </div>
 
                   <div className="flex items-start gap-4">
-                    <div className="w-8 h-8 rounded-lg bg-brand-navy-mid border border-brand-blue/30 flex items-center justify-center text-brand-blue flex-shrink-0">
+                    <div className="w-8 h-8 rounded-lg bg-brand-navy text-brand-blue flex items-center justify-center flex-shrink-0 shadow-sm">
                       <CheckCircle2 className="w-4 h-4" />
                     </div>
                     <div>
-                      <h3 className="font-display font-bold text-sm text-brand-white uppercase mb-1">
+                      <h3 className="font-display font-bold text-sm text-brand-navy uppercase mb-1">
                         Zero Downtime Guarantee
                       </h3>
-                      <p className="text-xs text-brand-white-muted leading-relaxed font-sans">
+                      <p className="text-xs text-brand-navy/80 leading-relaxed font-sans">
                         Offensive tests are conducted non-destructively with rate-limiting and precision payload engineering.
                       </p>
                     </div>
                   </div>
 
                   <div className="flex items-start gap-4">
-                    <div className="w-8 h-8 rounded-lg bg-brand-navy-mid border border-brand-blue/30 flex items-center justify-center text-brand-blue flex-shrink-0">
+                    <div className="w-8 h-8 rounded-lg bg-brand-navy text-brand-blue flex items-center justify-center flex-shrink-0 shadow-sm">
                       <FileText className="w-4 h-4" />
                     </div>
                     <div>
-                      <h3 className="font-display font-bold text-sm text-brand-white uppercase mb-1">
+                      <h3 className="font-display font-bold text-sm text-brand-navy uppercase mb-1">
                         Free 60-Day Re-Testing
                       </h3>
-                      <p className="text-xs text-brand-white-muted leading-relaxed font-sans">
+                      <p className="text-xs text-brand-navy/80 leading-relaxed font-sans">
                         Re-testing of all identified vulnerabilities is provided at zero additional cost to certify remediation.
                       </p>
                     </div>
@@ -405,20 +405,20 @@ export default function RequestAssessmentPage() {
               </div>
 
               {/* Direct Inquiries & Physical Presence */}
-              <div className="p-8 rounded-2xl bg-brand-navy-deep border border-brand-navy-border space-y-4">
-                <div className="font-display font-bold text-xs uppercase tracking-widest text-brand-blue">
+              <div className="p-8 rounded-2xl bg-brand-off-white border border-brand-navy/15 shadow-sm space-y-4">
+                <div className="font-display font-bold text-xs uppercase tracking-widest text-brand-navy">
                   Direct Security Hotline
                 </div>
-                <div className="space-y-3 text-xs text-brand-white-muted">
+                <div className="space-y-3 text-xs text-brand-navy/80">
                   <div className="flex items-center gap-3">
                     <Mail className="w-4 h-4 text-brand-blue" />
-                    <a href="mailto:security@secera.io" className="hover:text-brand-blue transition-colors font-mono">
+                    <a href="mailto:security@secera.io" className="hover:text-brand-blue transition-colors font-mono font-bold">
                       security@secera.io
                     </a>
                   </div>
                   <div className="flex items-center gap-3">
                     <Phone className="w-4 h-4 text-brand-blue" />
-                    <span className="font-mono">+1 (800) 942-SECERA</span>
+                    <span className="font-mono font-bold">+1 (800) 942-SECERA</span>
                   </div>
                   <div className="flex items-center gap-3">
                     <MapPin className="w-4 h-4 text-brand-blue" />

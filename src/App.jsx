@@ -3,6 +3,7 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
+import LeadMagnetForm from './components/LeadMagnetForm';
 
 // Page Views
 import HomePage from './pages/HomePage';
@@ -18,13 +19,14 @@ import RequestAssessmentPage from './pages/RequestAssessmentPage';
 
 export default function App() {
   return (
-    <div className="flex flex-col min-h-screen bg-brand-navy text-brand-white">
+    <div className="flex flex-col min-h-screen bg-brand-off-white text-brand-navy">
       <ScrollToTop />
+      <LeadMagnetForm />
       
-      {/* Sticky Header with Mega-Menu */}
+      {/* Solid Navy Header with Mega-Menu */}
       <Header />
 
-      {/* Main Content Area with Silo Routes */}
+      {/* Main Content Area with Light-Themed Silo Routes */}
       <main className="flex-grow">
         <Routes>
           {/* Home */}
@@ -57,7 +59,7 @@ export default function App() {
         </Routes>
       </main>
 
-      {/* Confident Minimal Multi-Column Footer */}
+      {/* Solid Navy Multi-Column Footer */}
       <Footer />
     </div>
   );

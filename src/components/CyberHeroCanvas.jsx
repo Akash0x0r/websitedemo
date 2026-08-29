@@ -1,8 +1,9 @@
 import React, { useEffect, useRef } from 'react';
 
 /**
- * High-performance HTML5 Canvas generating an animated cybersecurity grid & particle mesh.
- * Palette: Dark Navy (#050540, #030328) and Electric Blue (#4FA8FF).
+ * High-performance HTML5 Canvas generating an animated cybersecurity grid & particle mesh
+ * optimized for a light-background high-trust corporate aesthetic.
+ * Palette: White (#FFFFFF / #F5F6F8), Sky/Electric Blue (#4FA8FF / #258EFF), Navy (#050540).
  */
 export default function CyberHeroCanvas() {
   const canvasRef = useRef(null);
@@ -33,9 +34,9 @@ export default function CyberHeroCanvas() {
         this.y = Math.random() * height;
         this.vx = (Math.random() - 0.5) * 0.45;
         this.vy = (Math.random() - 0.5) * 0.45;
-        this.radius = Math.random() * 1.8 + 1.2;
+        this.radius = Math.random() * 2 + 1.2;
         this.pulseSpeed = Math.random() * 0.02 + 0.01;
-        this.alpha = Math.random() * 0.5 + 0.3;
+        this.alpha = Math.random() * 0.4 + 0.4;
       }
 
       update() {
@@ -61,9 +62,9 @@ export default function CyberHeroCanvas() {
       draw() {
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(111, 195, 255, ${this.alpha})`;
-        ctx.shadowColor = '#4FA8FF';
-        ctx.shadowBlur = 8;
+        ctx.fillStyle = `rgba(37, 142, 255, ${this.alpha})`;
+        ctx.shadowColor = 'rgba(79, 168, 255, 0.5)';
+        ctx.shadowBlur = 4;
         ctx.fill();
         ctx.shadowBlur = 0; // reset
       }
@@ -99,21 +100,21 @@ export default function CyberHeroCanvas() {
     const render = () => {
       ctx.clearRect(0, 0, width, height);
 
-      // Background subtle gradient
+      // Light background gradient
       const bgGrad = ctx.createRadialGradient(
-        width / 2, height / 2.5, 50,
+        width / 2, height / 2.5, 60,
         width / 2, height / 2, Math.max(width, height)
       );
-      bgGrad.addColorStop(0, '#0A0A6E');
-      bgGrad.addColorStop(0.5, '#050540');
-      bgGrad.addColorStop(1, '#030328');
+      bgGrad.addColorStop(0, '#FFFFFF');
+      bgGrad.addColorStop(0.65, '#F5F6F8');
+      bgGrad.addColorStop(1, '#EBF2FA');
       ctx.fillStyle = bgGrad;
       ctx.fillRect(0, 0, width, height);
 
-      // Cyber geometric grid
+      // Subtle light cyber geometric grid
       gridOffset = (gridOffset + 0.15) % 40;
-      ctx.lineWidth = 0.5;
-      ctx.strokeStyle = 'rgba(79, 168, 255, 0.05)';
+      ctx.lineWidth = 0.6;
+      ctx.strokeStyle = 'rgba(5, 5, 64, 0.04)';
 
       // Vertical lines
       for (let x = 0; x < width; x += 40) {
@@ -131,7 +132,7 @@ export default function CyberHeroCanvas() {
         ctx.stroke();
       }
 
-      // Connect particle mesh
+      // Connect particle mesh with light-blue traces
       for (let i = 0; i < particles.length; i++) {
         for (let j = i + 1; j < particles.length; j++) {
           const dx = particles[i].x - particles[j].x;
@@ -141,7 +142,7 @@ export default function CyberHeroCanvas() {
           if (distance < maxConnectionDistance) {
             const opacity = 1 - distance / maxConnectionDistance;
             ctx.beginPath();
-            ctx.strokeStyle = `rgba(79, 168, 255, ${opacity * 0.28})`;
+            ctx.strokeStyle = `rgba(79, 168, 255, ${opacity * 0.35})`;
             ctx.lineWidth = 1;
             ctx.moveTo(particles[i].x, particles[i].y);
             ctx.lineTo(particles[j].x, particles[j].y);

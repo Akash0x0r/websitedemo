@@ -8,19 +8,19 @@ export default {
     extend: {
       colors: {
         brand: {
-          navy: '#050540',
-          'navy-deep': '#030328',
-          'navy-mid': '#0A0A6E',
-          'navy-light': '#0F127A',
-          'navy-card': '#07074D',
-          'navy-border': '#161972',
-          blue: '#4FA8FF',
-          'blue-light': '#6FC3FF',
-          'blue-glow': '#4FA8FF40',
-          'blue-deep': '#258EFF',
-          white: '#FFFFFF',
-          'off-white': '#F5F6F8',
-          'white-muted': '#D3E2F8',
+          navy: '#0A0A6E',
+          'navy-deep': '#050540',
+           'navy-mid': '#0F127A',
+            'navy-light': '#1E2A8A',
+            'navy-card': '#07074D',
+             'navy-border': '#161972',
+              blue: '#2F6FED',
+               'blue-light': '#6FC3FF',
+               'blue-glow': '#4FA8FF40',
+                'blue-deep': '#258EFF',
+                  white: '#FFFFFF',
+                  'off-white': '#F5F6F8',
+                    'white-muted': '#D3E2F8',
         }
       },
       fontFamily: {

@@ -27,7 +27,7 @@ export default function Header() {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-[#050540] border-b border-[#161972] shadow-xl py-3.5">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-[#0A0A6E] border-b border-[#1E2A8A]/50 shadow-lg py-3.5">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
           
@@ -47,37 +47,37 @@ export default function Header() {
             >
               <button 
                 type="button"
-                className={`inline-flex items-center px-3.5 py-2 rounded text-xs font-display font-bold uppercase tracking-wider transition-colors duration-150 ${
+                className={`inline-flex items-center px-3.5 py-2 rounded text-xs font-display font-semibold uppercase tracking-wider transition-colors duration-150 ${
                   activeMenu === 'services' || location.pathname.startsWith('/services')
-                    ? 'text-brand-blue bg-[#0A0A6E]'
-                    : 'text-brand-white hover:text-brand-blue hover:bg-[#0A0A6E]/50'
+                    ? 'text-brand-blue-light bg-[#0F127A]'
+                    : 'text-brand-white hover:text-brand-blue-light hover:bg-[#0F127A]/60'
                 }`}
                 aria-expanded={activeMenu === 'services'}
               >
                 <span>Services</span>
-                <ChevronDown className={`ml-1.5 w-3.5 h-3.5 transition-transform duration-200 ${activeMenu === 'services' ? 'rotate-180 text-brand-blue' : ''}`} />
+                <ChevronDown className={`ml-1.5 w-3.5 h-3.5 transition-transform duration-200 ${activeMenu === 'services' ? 'rotate-180 text-brand-blue-light' : ''}`} />
               </button>
 
               {/* SERVICES SOLID NON-TRANSPARENT CONTRACTED MEGA MENU */}
               {activeMenu === 'services' && (
                 <div 
-                  className="fixed left-0 right-0 top-[62px] w-full bg-[#050540] border-b-2 border-brand-blue shadow-2xl z-50"
+                  className="fixed left-0 right-0 top-[62px] w-full bg-[#0A0A6E] border-b-2 border-brand-blue-light shadow-xl z-50"
                   onMouseEnter={() => setActiveMenu('services')}
                   onMouseLeave={() => setActiveMenu(null)}
                 >
                   {/* Contracted Container with crisp padding */}
-                  <div className="max-w-7xl mx-auto px-6 py-6 bg-[#050540]">
+                  <div className="max-w-7xl mx-auto px-6 py-6 bg-[#0A0A6E]">
                     
-                    <div className="flex items-center justify-between pb-3 mb-5 border-b border-[#161972]">
+                    <div className="flex items-center justify-between pb-3 mb-5 border-b border-[#1E2A8A]/50">
                       <div className="flex items-center gap-2.5">
-                        <span className="w-2 h-2 bg-brand-blue rounded-full" />
-                        <span className="text-[11px] font-mono uppercase tracking-widest text-brand-blue font-bold">
+                        <span className="w-2 h-2 bg-brand-blue-light rounded-full" />
+                        <span className="text-[11px] font-mono uppercase tracking-widest text-brand-blue-light font-semibold">
                           SECERA Offensive & Defensive Security Pillars
                         </span>
                       </div>
                       <Link 
                         to="/services" 
-                        className="text-xs font-display uppercase tracking-wider font-bold text-brand-blue hover:text-brand-blue-light inline-flex items-center gap-1 group"
+                        className="text-xs font-display uppercase tracking-wider font-semibold text-brand-blue-light hover:text-white inline-flex items-center gap-1 group"
                       >
                         <span>View All Services</span>
                         <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
@@ -85,16 +85,16 @@ export default function Header() {
                     </div>
 
                     {/* 6 Pillars Compact Grid */}
-                    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 xl:gap-5 bg-[#050540]">
+                    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 xl:gap-5 bg-[#0A0A6E]">
                       {SERVICES_DATA.slice(0, 6).map((pillar) => (
-                        <div key={pillar.id} className="bg-[#030328] p-3 rounded-lg border border-[#161972] hover:border-brand-blue transition-colors group/col">
+                        <div key={pillar.id} className="bg-[#0F127A]/80 p-3 rounded-lg border border-[#1E2A8A] hover:border-brand-blue-light transition-colors group/col">
                           <Link 
                             to={pillar.slug} 
-                            className="block pb-2 mb-2 border-b border-[#161972]"
+                            className="block pb-2 mb-2 border-b border-[#1E2A8A]"
                           >
-                            <div className="flex items-center space-x-1.5 text-brand-blue mb-1">
+                            <div className="flex items-center space-x-1.5 text-brand-blue-light mb-1">
                               <DynamicIcon name={pillar.icon} className="w-3.5 h-3.5" />
-                              <h3 className="font-display font-bold text-[11px] uppercase tracking-wider text-brand-white group-hover/col:text-brand-blue transition-colors line-clamp-1">
+                              <h3 className="font-display font-semibold text-[11px] uppercase tracking-wider text-brand-white group-hover/col:text-brand-blue-light transition-colors line-clamp-1">
                                 {pillar.shortTitle}
                               </h3>
                             </div>
@@ -150,25 +150,25 @@ export default function Header() {
             >
               <button 
                 type="button"
-                className={`inline-flex items-center px-3.5 py-2 rounded text-xs font-display font-bold uppercase tracking-wider transition-colors duration-150 ${
+                className={`inline-flex items-center px-3.5 py-2 rounded text-xs font-display font-semibold uppercase tracking-wider transition-colors duration-150 ${
                   activeMenu === 'industries' || location.pathname.startsWith('/industries')
-                    ? 'text-brand-blue bg-[#0A0A6E]'
-                    : 'text-brand-white hover:text-brand-blue hover:bg-[#0A0A6E]/50'
+                    ? 'text-brand-blue-light bg-[#0F127A]'
+                    : 'text-brand-white hover:text-brand-blue-light hover:bg-[#0F127A]/60'
                 }`}
                 aria-expanded={activeMenu === 'industries'}
               >
                 <span>Industries</span>
-                <ChevronDown className={`ml-1.5 w-3.5 h-3.5 transition-transform duration-200 ${activeMenu === 'industries' ? 'rotate-180 text-brand-blue' : ''}`} />
+                <ChevronDown className={`ml-1.5 w-3.5 h-3.5 transition-transform duration-200 ${activeMenu === 'industries' ? 'rotate-180 text-brand-blue-light' : ''}`} />
               </button>
 
               {/* INDUSTRIES SOLID NON-TRANSPARENT CONTRACTED SUB-MENU */}
               {activeMenu === 'industries' && (
                 <div 
-                  className="absolute top-full left-0 w-80 bg-[#050540] border-2 border-brand-blue rounded-xl shadow-2xl p-3 mt-1 z-50"
+                  className="absolute top-full left-0 w-80 bg-[#0A0A6E] border-2 border-brand-blue-light rounded-xl shadow-xl p-3 mt-1 z-50"
                   onMouseEnter={() => setActiveMenu('industries')}
                   onMouseLeave={() => setActiveMenu(null)}
                 >
-                  <div className="text-[10px] font-mono uppercase tracking-widest text-brand-blue font-bold px-2 py-1 mb-1 border-b border-[#161972]">
+                  <div className="text-[10px] font-mono uppercase tracking-widest text-brand-blue-light font-semibold px-2 py-1 mb-1 border-b border-[#1E2A8A]">
                     Industry Specific Suites
                   </div>
                   <div className="space-y-0.5">
@@ -176,13 +176,13 @@ export default function Header() {
                       <Link 
                         key={ind.id}
                         to={ind.slug}
-                        className="flex items-center space-x-2.5 px-2.5 py-2 rounded-lg hover:bg-[#0A0A6E] transition-colors group"
+                        className="flex items-center space-x-2.5 px-2.5 py-2 rounded-lg hover:bg-[#0F127A] transition-colors group"
                       >
-                        <div className="text-brand-blue">
+                        <div className="text-brand-blue-light">
                           <DynamicIcon name={ind.icon} className="w-4 h-4" />
                         </div>
                         <div>
-                          <div className="text-xs font-display font-bold text-brand-white group-hover:text-brand-blue uppercase">
+                          <div className="text-xs font-display font-semibold text-brand-white group-hover:text-brand-blue-light uppercase">
                             {ind.title}
                           </div>
                           <div className="text-[10px] text-brand-white-muted/70 line-clamp-1">
@@ -204,35 +204,35 @@ export default function Header() {
             >
               <button 
                 type="button"
-                className={`inline-flex items-center px-3.5 py-2 rounded text-xs font-display font-bold uppercase tracking-wider transition-colors duration-150 ${
+                className={`inline-flex items-center px-3.5 py-2 rounded text-xs font-display font-semibold uppercase tracking-wider transition-colors duration-150 ${
                   activeMenu === 'resources' || location.pathname.startsWith('/resources')
-                    ? 'text-brand-blue bg-[#0A0A6E]'
-                    : 'text-brand-white hover:text-brand-blue hover:bg-[#0A0A6E]/50'
+                    ? 'text-brand-blue-light bg-[#0F127A]'
+                    : 'text-brand-white hover:text-brand-blue-light hover:bg-[#0F127A]/60'
                 }`}
                 aria-expanded={activeMenu === 'resources'}
               >
                 <span>Resources</span>
-                <ChevronDown className={`ml-1.5 w-3.5 h-3.5 transition-transform duration-200 ${activeMenu === 'resources' ? 'rotate-180 text-brand-blue' : ''}`} />
+                <ChevronDown className={`ml-1.5 w-3.5 h-3.5 transition-transform duration-200 ${activeMenu === 'resources' ? 'rotate-180 text-brand-blue-light' : ''}`} />
               </button>
 
               {/* RESOURCES SOLID NON-TRANSPARENT CONTRACTED SUB-MENU */}
               {activeMenu === 'resources' && (
                 <div 
-                  className="absolute top-full left-0 w-72 bg-[#050540] border-2 border-brand-blue rounded-xl shadow-2xl p-3 mt-1 z-50"
+                  className="absolute top-full left-0 w-72 bg-[#0A0A6E] border-2 border-brand-blue-light rounded-xl shadow-xl p-3 mt-1 z-50"
                   onMouseEnter={() => setActiveMenu('resources')}
                   onMouseLeave={() => setActiveMenu(null)}
                 >
-                  <div className="text-[10px] font-mono uppercase tracking-widest text-brand-blue font-bold px-2 py-1 mb-1 border-b border-[#161972]">
+                  <div className="text-[10px] font-mono uppercase tracking-widest text-brand-blue-light font-semibold px-2 py-1 mb-1 border-b border-[#1E2A8A]">
                     Research & Knowledge
                   </div>
                   <div className="space-y-1">
-                    <Link to="/resources/blog" className="block px-3 py-2 rounded-lg hover:bg-[#0A0A6E] text-xs font-display font-bold uppercase text-brand-white hover:text-brand-blue transition-colors">
+                    <Link to="/resources/blog" className="block px-3 py-2 rounded-lg hover:bg-[#0F127A] text-xs font-display font-semibold uppercase text-brand-white hover:text-brand-blue-light transition-colors">
                       Security Blog & Research
                     </Link>
-                    <Link to="/resources#case-studies" className="block px-3 py-2 rounded-lg hover:bg-[#0A0A6E] text-xs font-display font-bold uppercase text-brand-white hover:text-brand-blue transition-colors">
+                    <Link to="/resources#case-studies" className="block px-3 py-2 rounded-lg hover:bg-[#0F127A] text-xs font-display font-semibold uppercase text-brand-white hover:text-brand-blue-light transition-colors">
                       Client Case Studies
                     </Link>
-                    <Link to="/resources#guides" className="block px-3 py-2 rounded-lg hover:bg-[#0A0A6E] text-xs font-display font-bold uppercase text-brand-white hover:text-brand-blue transition-colors">
+                    <Link to="/resources#guides" className="block px-3 py-2 rounded-lg hover:bg-[#0F127A] text-xs font-display font-semibold uppercase text-brand-white hover:text-brand-blue-light transition-colors">
                       Checklists & Whitepapers
                     </Link>
                   </div>
@@ -248,41 +248,41 @@ export default function Header() {
             >
               <button 
                 type="button"
-                className={`inline-flex items-center px-3.5 py-2 rounded text-xs font-display font-bold uppercase tracking-wider transition-colors duration-150 ${
+                className={`inline-flex items-center px-3.5 py-2 rounded text-xs font-display font-semibold uppercase tracking-wider transition-colors duration-150 ${
                   activeMenu === 'company' || location.pathname.startsWith('/company')
-                    ? 'text-brand-blue bg-[#0A0A6E]'
-                    : 'text-brand-white hover:text-brand-blue hover:bg-[#0A0A6E]/50'
+                    ? 'text-brand-blue-light bg-[#0F127A]'
+                    : 'text-brand-white hover:text-brand-blue-light hover:bg-[#0F127A]/60'
                 }`}
                 aria-expanded={activeMenu === 'company'}
               >
                 <span>Company</span>
-                <ChevronDown className={`ml-1.5 w-3.5 h-3.5 transition-transform duration-200 ${activeMenu === 'company' ? 'rotate-180 text-brand-blue' : ''}`} />
+                <ChevronDown className={`ml-1.5 w-3.5 h-3.5 transition-transform duration-200 ${activeMenu === 'company' ? 'rotate-180 text-brand-blue-light' : ''}`} />
               </button>
 
               {/* COMPANY SOLID NON-TRANSPARENT CONTRACTED SUB-MENU */}
               {activeMenu === 'company' && (
                 <div 
-                  className="absolute top-full left-0 w-64 bg-[#050540] border-2 border-brand-blue rounded-xl shadow-2xl p-3 mt-1 z-50"
+                  className="absolute top-full left-0 w-64 bg-[#0A0A6E] border-2 border-brand-blue-light rounded-xl shadow-xl p-3 mt-1 z-50"
                   onMouseEnter={() => setActiveMenu('company')}
                   onMouseLeave={() => setActiveMenu(null)}
                 >
-                  <div className="text-[10px] font-mono uppercase tracking-widest text-brand-blue font-bold px-2 py-1 mb-1 border-b border-[#161972]">
+                  <div className="text-[10px] font-mono uppercase tracking-widest text-brand-blue-light font-semibold px-2 py-1 mb-1 border-b border-[#1E2A8A]">
                     About Organization
                   </div>
                   <div className="space-y-1">
-                    <Link to="/company/about" className="block px-3 py-2 rounded-lg hover:bg-[#0A0A6E] text-xs font-display font-bold uppercase text-brand-white hover:text-brand-blue transition-colors">
+                    <Link to="/company/about" className="block px-3 py-2 rounded-lg hover:bg-[#0F127A] text-xs font-display font-semibold uppercase text-brand-white hover:text-brand-blue-light transition-colors">
                       About SECERA
                     </Link>
-                    <Link to="/company/methodology" className="block px-3 py-2 rounded-lg hover:bg-[#0A0A6E] text-xs font-display font-bold uppercase text-brand-white hover:text-brand-blue transition-colors">
+                    <Link to="/company/methodology" className="block px-3 py-2 rounded-lg hover:bg-[#0F127A] text-xs font-display font-semibold uppercase text-brand-white hover:text-brand-blue-light transition-colors">
                       Our 6-Step Methodology
                     </Link>
-                    <Link to="/company/expertise" className="block px-3 py-2 rounded-lg hover:bg-[#0A0A6E] text-xs font-display font-bold uppercase text-brand-white hover:text-brand-blue transition-colors">
+                    <Link to="/company/expertise" className="block px-3 py-2 rounded-lg hover:bg-[#0F127A] text-xs font-display font-semibold uppercase text-brand-white hover:text-brand-blue-light transition-colors">
                       Expertise & Certifications
                     </Link>
-                    <Link to="/company/standards" className="block px-3 py-2 rounded-lg hover:bg-[#0A0A6E] text-xs font-display font-bold uppercase text-brand-white hover:text-brand-blue transition-colors">
+                    <Link to="/company/standards" className="block px-3 py-2 rounded-lg hover:bg-[#0F127A] text-xs font-display font-semibold uppercase text-brand-white hover:text-brand-blue-light transition-colors">
                       Security Standards
                     </Link>
-                    <Link to="/company/careers" className="block px-3 py-2 rounded-lg hover:bg-[#0A0A6E] text-xs font-display font-bold uppercase text-brand-white hover:text-brand-blue transition-colors">
+                    <Link to="/company/careers" className="block px-3 py-2 rounded-lg hover:bg-[#0F127A] text-xs font-display font-semibold uppercase text-brand-white hover:text-brand-blue-light transition-colors">
                       Careers & Open Roles
                     </Link>
                   </div>
@@ -293,10 +293,10 @@ export default function Header() {
             {/* Direct Contact Link */}
             <Link 
               to="/contact" 
-              className={`px-3.5 py-2 rounded text-xs font-display font-bold uppercase tracking-wider transition-colors duration-150 ${
+              className={`px-3.5 py-2 rounded text-xs font-display font-semibold uppercase tracking-wider transition-colors duration-150 ${
                 location.pathname === '/contact'
-                  ? 'text-brand-blue bg-[#0A0A6E]'
-                  : 'text-brand-white hover:text-brand-blue hover:bg-[#0A0A6E]/50'
+                  ? 'text-brand-blue-light bg-[#0F127A]'
+                  : 'text-brand-white hover:text-brand-blue-light hover:bg-[#0F127A]/60'
               }`}
             >
               Contact
@@ -308,7 +308,7 @@ export default function Header() {
           <div className="hidden lg:flex items-center space-x-4">
             <Link 
               to="/request-assessment"
-              className="relative inline-flex items-center justify-center px-5 py-2.5 rounded bg-brand-blue text-brand-navy font-display font-bold text-xs uppercase tracking-wider hover:bg-brand-blue-light hover:shadow-glow-md transition-all duration-200 group border border-brand-blue"
+              className="relative inline-flex items-center justify-center px-5 py-2.5 rounded bg-brand-blue-light text-brand-navy-deep font-display font-bold text-xs uppercase tracking-wider hover:bg-brand-navy hover:text-white hover:border-brand-navy transition-all duration-200 group border border-brand-blue-light shadow-sm min-h-[44px]"
             >
               <span>Request Security Assessment</span>
               <ArrowRight className="w-3.5 h-3.5 ml-1.5 group-hover:translate-x-1 transition-transform" />
@@ -319,13 +319,13 @@ export default function Header() {
           <div className="flex lg:hidden items-center space-x-3">
             <Link 
               to="/request-assessment" 
-              className="px-3 py-1.5 rounded bg-brand-blue text-brand-navy font-display font-bold text-xs uppercase tracking-wide"
+              className="px-3 py-1.5 rounded bg-brand-blue-light text-brand-navy-deep font-display font-bold text-xs uppercase tracking-wide min-h-[36px] flex items-center"
             >
               Assess
             </Link>
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 rounded bg-[#0A0A6E] text-brand-white hover:text-brand-blue focus:outline-none"
+              className="p-2 rounded bg-[#0F127A] text-brand-white hover:text-brand-blue-light focus:outline-none min-h-[44px] min-w-[44px] flex items-center justify-center"
               aria-label="Toggle navigation menu"
             >
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -335,9 +335,9 @@ export default function Header() {
         </div>
       </div>
 
-      {/* MOBILE FULL-SCREEN NAVIGATION OVERLAY (SOLID NAVY) */}
+      {/* MOBILE FULL-SCREEN NAVIGATION OVERLAY (SOFTER NAVY) */}
       {mobileMenuOpen && (
-        <div className="lg:hidden fixed inset-0 top-[60px] bg-[#050540] z-50 overflow-y-auto px-6 py-6 border-t border-[#161972]">
+        <div className="lg:hidden fixed inset-0 top-[60px] bg-[#0A0A6E] z-50 overflow-y-auto px-6 py-6 border-t border-[#1E2A8A]/50">
           <div className="space-y-4 max-w-lg mx-auto pb-24">
             
             {/* Primary Mobile CTA */}

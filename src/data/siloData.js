@@ -210,22 +210,22 @@ export const SERVICES_DATA = [
     subServices: [
       {
         id: "cloud-security-assessment",
-        title: "Cloud Security Assessment",
+        title: "Cloud Security & ISO 27001 Alignment",
         slug: "/services/cloud-infrastructure-security/cloud-security-assessment",
-        shortDesc: "In-depth audit of AWS, Azure, and Google Cloud IAM roles, storage policies, VPC peering, and KMS keys.",
-        whatItIs: "Configuration and threat audit across all cloud service providers against CIS Cloud Benchmarks and cloud-specific attack techniques.",
-        whoItsFor: "Cloud-first companies, multi-cloud enterprises, and SaaS providers.",
+        shortDesc: "In-depth audit of AWS, Azure, and Google Cloud IAM roles, storage policies, VPC peering, and ISO 27001 Annex A control alignment.",
+        whatItIs: "Configuration and threat audit across all cloud service providers against CIS Cloud Benchmarks, ISO 27001 controls, and cloud-specific attack techniques.",
+        whoItsFor: "Cloud-first companies, multi-cloud enterprises, and SaaS providers requiring compliance-aligned infrastructure.",
         process: [
           { step: "01", name: "IAM & Role Graph Analysis", desc: "Discovering over-permissive IAM policies, cross-account assumptions, and privilege escalation paths." },
           { step: "02", name: "Data Store & Bucket Audit", desc: "Testing S3, Blob Storage, and database configurations for unauthorized exposure." },
           { step: "03", name: "Cloud Threat Simulation", desc: "Simulating compromised credentials to verify guardrails, AWS GuardDuty, and Azure Sentinel." }
         ],
-        deliverables: ["CIS Cloud Benchmark Compliance Matrix", "IAM Policy Least-Privilege Terraform Templates"],
+        deliverables: ["CIS Cloud Benchmark & ISO 27001 Compliance Matrix", "IAM Policy Least-Privilege Terraform Templates"],
         faqs: [{ q: "Do we need to provide admin cloud access?", a: "We only require read-only / SecurityAuditor IAM permissions for the configuration audit, and scoped roles for simulation." }]
       },
       {
         id: "infrastructure-security-assessment",
-        title: "Infrastructure Security Assessment",
+        title: "Infrastructure Hardening & CIS Benchmarks",
         slug: "/services/cloud-infrastructure-security/infrastructure-security-assessment",
         shortDesc: "Securing bare-metal servers, hypervisors, load balancers, and Linux/Windows enterprise fleets.",
         whatItIs: "Deep evaluation of core OS configurations, patch management, kernel parameters, and remote access systems.",
@@ -239,23 +239,23 @@ export const SERVICES_DATA = [
       },
       {
         id: "security-configuration-review",
-        title: "Security Configuration Review",
+        title: "Data Privacy & Storage Encryption Audit",
         slug: "/services/cloud-infrastructure-security/security-configuration-review",
-        shortDesc: "Auditing WAFs, API gateways, database clusters, Kafka, Redis, and Elasticsearch clusters.",
-        whatItIs: "Validating configuration posture for middleware, databases, caches, and networking equipment.",
-        whoItsFor: "High-scale platforms handling millions of transactions daily.",
+        shortDesc: "Auditing cloud data privacy controls, database encryption at rest/in transit, KMS key rotation, and PII storage boundaries.",
+        whatItIs: "Validating data protection posture, PII storage security, middleware, database encryption, and regulatory privacy controls.",
+        whoItsFor: "High-scale platforms handling sensitive customer PII and multi-jurisdictional data privacy requirements.",
         process: [
-          { step: "01", name: "Middleware & DB Audit", desc: "Reviewing database TLS, encryption-at-rest, access control, and logging." },
-          { step: "02", name: "WAF & CDN Rule Optimization", desc: "Tuning Cloudflare, AWS WAF, or Akamai rules against sophisticated bypass vectors." }
+          { step: "01", name: "Data Protection & DB Audit", desc: "Reviewing database TLS, encryption-at-rest, access control, PII exposure, and logging." },
+          { step: "02", name: "WAF & Privacy Policy Enforcement", desc: "Tuning Cloudflare, AWS WAF, or Akamai rules against data exfiltration vectors." }
         ],
-        deliverables: ["Middleware Hardening Specifications", "WAF Rule Tuning Matrix"],
+        deliverables: ["Data Privacy Technical Assessment", "Middleware & Encryption Specifications"],
         faqs: [{ q: "Do you review database encryption keys?", a: "Yes, including KMS envelope encryption and key rotation policies." }]
       },
       {
         id: "security-hardening",
-        title: "Security Hardening",
+        title: "Security Configuration & Policy Review",
         slug: "/services/cloud-infrastructure-security/security-hardening",
-        shortDesc: "Actionable hardening for Kubernetes clusters, Docker daemons, and operating systems.",
+        shortDesc: "Actionable hardening for Kubernetes clusters, Docker daemons, cloud gateways, and security policies.",
         whatItIs: "Hands-on implementation and automation of security baselines to prevent container escapes, root execution, and network sniffing.",
         whoItsFor: "DevOps and Platform Engineering teams moving to zero-trust container environments.",
         process: [

@@ -61,23 +61,23 @@ export default function Header() {
               {/* SERVICES SOLID NON-TRANSPARENT CONTRACTED MEGA MENU */}
               {activeMenu === 'services' && (
                 <div 
-                  className="fixed left-0 right-0 top-[62px] w-full bg-[#0A0A6E] border-b-2 border-brand-blue-light shadow-xl z-50"
+                  className="fixed left-0 right-0 top-[62px] w-full bg-brand-off-white border-b-2 border-brand-blue border-x border-brand-navy/10 shadow-2xl z-50"
                   onMouseEnter={() => setActiveMenu('services')}
                   onMouseLeave={() => setActiveMenu(null)}
                 >
                   {/* Contracted Container with crisp padding */}
-                  <div className="max-w-7xl mx-auto px-6 py-6 bg-[#0A0A6E]">
+                  <div className="max-w-7xl mx-auto px-6 py-6 bg-brand-off-white text-brand-navy">
                     
-                    <div className="flex items-center justify-between pb-3 mb-5 border-b border-[#1E2A8A]/50">
+                    <div className="flex items-center justify-between pb-3 mb-5 border-b border-brand-navy/10">
                       <div className="flex items-center gap-2.5">
-                        <span className="w-2 h-2 bg-brand-blue-light rounded-full" />
-                        <span className="text-[11px] font-mono uppercase tracking-widest text-brand-blue-light font-semibold">
+                        <span className="w-2 h-2 bg-brand-blue rounded-full" />
+                        <span className="text-[11px] font-mono uppercase tracking-widest text-brand-navy font-bold">
                           SECERA Offensive & Defensive Security Pillars
                         </span>
                       </div>
                       <Link 
                         to="/services" 
-                        className="text-xs font-display uppercase tracking-wider font-semibold text-brand-blue-light hover:text-white inline-flex items-center gap-1 group"
+                        className="text-xs font-display uppercase tracking-wider font-bold text-brand-navy hover:text-brand-blue inline-flex items-center gap-1 group"
                       >
                         <span>View All Services</span>
                         <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
@@ -85,20 +85,20 @@ export default function Header() {
                     </div>
 
                     {/* 6 Pillars Compact Grid */}
-                    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 xl:gap-5 bg-[#0A0A6E]">
+                    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 xl:gap-5 bg-brand-off-white">
                       {SERVICES_DATA.slice(0, 6).map((pillar) => (
-                        <div key={pillar.id} className="bg-[#0F127A]/80 p-3 rounded-lg border border-[#1E2A8A] hover:border-brand-blue-light transition-colors group/col">
+                        <div key={pillar.id} className="bg-white p-3 rounded-xl border border-brand-navy/15 hover:border-brand-blue hover:shadow-md hover:bg-brand-blue-light/10 transition-all group/col">
                           <Link 
                             to={pillar.slug} 
-                            className="block pb-2 mb-2 border-b border-[#1E2A8A]"
+                            className="block pb-2 mb-2 border-b border-brand-navy/10"
                           >
-                            <div className="flex items-center space-x-1.5 text-brand-blue-light mb-1">
-                              <DynamicIcon name={pillar.icon} className="w-3.5 h-3.5" />
-                              <h3 className="font-display font-semibold text-[11px] uppercase tracking-wider text-brand-white group-hover/col:text-brand-blue-light transition-colors line-clamp-1">
+                            <div className="flex items-center space-x-1.5 text-brand-navy mb-1">
+                              <DynamicIcon name={pillar.icon} className="w-3.5 h-3.5 text-brand-blue" />
+                              <h3 className="font-display font-bold text-[11px] uppercase tracking-wider text-brand-navy group-hover/col:text-brand-blue-deep transition-colors line-clamp-1">
                                 {pillar.shortTitle}
                               </h3>
                             </div>
-                            <p className="text-[10px] text-brand-white-muted/70 line-clamp-1 leading-snug font-sans">
+                            <p className="text-[10px] text-brand-navy/70 line-clamp-1 leading-snug font-sans">
                               {pillar.tagline}
                             </p>
                           </Link>
@@ -109,7 +109,7 @@ export default function Header() {
                               <li key={sub.id}>
                                 <Link 
                                   to={sub.slug} 
-                                  className="text-[11px] text-brand-white-muted/90 hover:text-brand-blue transition-colors block py-0.5 line-clamp-1"
+                                  className="text-[11px] text-brand-navy/85 hover:text-brand-blue-deep hover:bg-brand-blue-light/15 block px-1.5 py-0.5 rounded transition-colors line-clamp-1"
                                 >
                                   • {sub.title}
                                 </Link>
@@ -121,18 +121,18 @@ export default function Header() {
                     </div>
 
                     {/* Compact Practice Areas Strip */}
-                    <div className="mt-4 pt-3 border-t border-[#161972] flex flex-wrap items-center justify-between text-xs text-brand-white-muted/80">
+                    <div className="mt-4 pt-3 border-t border-brand-navy/10 flex flex-wrap items-center justify-between text-xs text-brand-navy/80">
                       <div className="flex items-center gap-4">
-                        <span className="font-mono text-brand-blue font-bold text-[11px]">ADDITIONAL:</span>
-                        <Link to="/services/devsecops-security" className="hover:text-brand-blue text-[11px] transition-colors">
+                        <span className="font-mono text-brand-navy font-bold text-[11px]">ADDITIONAL:</span>
+                        <Link to="/services/devsecops-security" className="hover:text-brand-blue text-[11px] transition-colors font-medium">
                           DevSecOps & CI/CD
                         </Link>
-                        <span className="text-[#161972]">•</span>
-                        <Link to="/services/data-protection" className="hover:text-brand-blue text-[11px] transition-colors">
+                        <span className="text-brand-navy/30">•</span>
+                        <Link to="/services/data-protection" className="hover:text-brand-blue text-[11px] transition-colors font-medium">
                           Data Protection & Privacy
                         </Link>
                       </div>
-                      <div className="font-mono text-[10px] text-brand-blue">
+                      <div className="font-mono text-[10px] text-brand-navy/70">
                         100% Human-Verified Exploits • Zero Scanner Dumps
                       </div>
                     </div>
@@ -164,11 +164,11 @@ export default function Header() {
               {/* INDUSTRIES SOLID NON-TRANSPARENT CONTRACTED SUB-MENU */}
               {activeMenu === 'industries' && (
                 <div 
-                  className="absolute top-full left-0 w-80 bg-[#0A0A6E] border-2 border-brand-blue-light rounded-xl shadow-xl p-3 mt-1 z-50"
+                  className="absolute top-full left-0 w-80 bg-brand-off-white border-2 border-brand-navy/15 rounded-xl shadow-2xl p-3 mt-1 z-50 text-brand-navy"
                   onMouseEnter={() => setActiveMenu('industries')}
                   onMouseLeave={() => setActiveMenu(null)}
                 >
-                  <div className="text-[10px] font-mono uppercase tracking-widest text-brand-blue-light font-semibold px-2 py-1 mb-1 border-b border-[#1E2A8A]">
+                  <div className="text-[10px] font-mono uppercase tracking-widest text-brand-navy font-bold px-2 py-1 mb-1 border-b border-brand-navy/10">
                     Industry Specific Suites
                   </div>
                   <div className="space-y-0.5">
@@ -176,16 +176,16 @@ export default function Header() {
                       <Link 
                         key={ind.id}
                         to={ind.slug}
-                        className="flex items-center space-x-2.5 px-2.5 py-2 rounded-lg hover:bg-[#0F127A] transition-colors group"
+                        className="flex items-center space-x-2.5 px-2.5 py-2 rounded-lg hover:bg-brand-blue-light/15 transition-colors group"
                       >
-                        <div className="text-brand-blue-light">
+                        <div className="text-brand-blue">
                           <DynamicIcon name={ind.icon} className="w-4 h-4" />
                         </div>
                         <div>
-                          <div className="text-xs font-display font-semibold text-brand-white group-hover:text-brand-blue-light uppercase">
+                          <div className="text-xs font-display font-bold text-brand-navy group-hover:text-brand-blue-deep uppercase">
                             {ind.title}
                           </div>
-                          <div className="text-[10px] text-brand-white-muted/70 line-clamp-1">
+                          <div className="text-[10px] text-brand-navy/70 line-clamp-1">
                             {ind.summary}
                           </div>
                         </div>
@@ -218,21 +218,21 @@ export default function Header() {
               {/* RESOURCES SOLID NON-TRANSPARENT CONTRACTED SUB-MENU */}
               {activeMenu === 'resources' && (
                 <div 
-                  className="absolute top-full left-0 w-72 bg-[#0A0A6E] border-2 border-brand-blue-light rounded-xl shadow-xl p-3 mt-1 z-50"
+                  className="absolute top-full left-0 w-72 bg-brand-off-white border-2 border-brand-navy/15 rounded-xl shadow-2xl p-3 mt-1 z-50 text-brand-navy"
                   onMouseEnter={() => setActiveMenu('resources')}
                   onMouseLeave={() => setActiveMenu(null)}
                 >
-                  <div className="text-[10px] font-mono uppercase tracking-widest text-brand-blue-light font-semibold px-2 py-1 mb-1 border-b border-[#1E2A8A]">
+                  <div className="text-[10px] font-mono uppercase tracking-widest text-brand-navy font-bold px-2 py-1 mb-1 border-b border-brand-navy/10">
                     Research & Knowledge
                   </div>
                   <div className="space-y-1">
-                    <Link to="/resources/blog" className="block px-3 py-2 rounded-lg hover:bg-[#0F127A] text-xs font-display font-semibold uppercase text-brand-white hover:text-brand-blue-light transition-colors">
+                    <Link to="/resources/blog" className="block px-3 py-2 rounded-lg hover:bg-brand-blue-light/15 text-xs font-display font-bold uppercase text-brand-navy hover:text-brand-blue-deep transition-colors">
                       Security Blog & Research
                     </Link>
-                    <Link to="/resources#case-studies" className="block px-3 py-2 rounded-lg hover:bg-[#0F127A] text-xs font-display font-semibold uppercase text-brand-white hover:text-brand-blue-light transition-colors">
+                    <Link to="/resources#case-studies" className="block px-3 py-2 rounded-lg hover:bg-brand-blue-light/15 text-xs font-display font-bold uppercase text-brand-navy hover:text-brand-blue-deep transition-colors">
                       Client Case Studies
                     </Link>
-                    <Link to="/resources#guides" className="block px-3 py-2 rounded-lg hover:bg-[#0F127A] text-xs font-display font-semibold uppercase text-brand-white hover:text-brand-blue-light transition-colors">
+                    <Link to="/resources#guides" className="block px-3 py-2 rounded-lg hover:bg-brand-blue-light/15 text-xs font-display font-bold uppercase text-brand-navy hover:text-brand-blue-deep transition-colors">
                       Checklists & Whitepapers
                     </Link>
                   </div>
@@ -262,27 +262,27 @@ export default function Header() {
               {/* COMPANY SOLID NON-TRANSPARENT CONTRACTED SUB-MENU */}
               {activeMenu === 'company' && (
                 <div 
-                  className="absolute top-full left-0 w-64 bg-[#0A0A6E] border-2 border-brand-blue-light rounded-xl shadow-xl p-3 mt-1 z-50"
+                  className="absolute top-full left-0 w-64 bg-brand-off-white border-2 border-brand-navy/15 rounded-xl shadow-2xl p-3 mt-1 z-50 text-brand-navy"
                   onMouseEnter={() => setActiveMenu('company')}
                   onMouseLeave={() => setActiveMenu(null)}
                 >
-                  <div className="text-[10px] font-mono uppercase tracking-widest text-brand-blue-light font-semibold px-2 py-1 mb-1 border-b border-[#1E2A8A]">
+                  <div className="text-[10px] font-mono uppercase tracking-widest text-brand-navy font-bold px-2 py-1 mb-1 border-b border-brand-navy/10">
                     About Organization
                   </div>
                   <div className="space-y-1">
-                    <Link to="/company/about" className="block px-3 py-2 rounded-lg hover:bg-[#0F127A] text-xs font-display font-semibold uppercase text-brand-white hover:text-brand-blue-light transition-colors">
+                    <Link to="/company/about" className="block px-3 py-2 rounded-lg hover:bg-brand-blue-light/15 text-xs font-display font-bold uppercase text-brand-navy hover:text-brand-blue-deep transition-colors">
                       About SECERA
                     </Link>
-                    <Link to="/company/methodology" className="block px-3 py-2 rounded-lg hover:bg-[#0F127A] text-xs font-display font-semibold uppercase text-brand-white hover:text-brand-blue-light transition-colors">
+                    <Link to="/company/methodology" className="block px-3 py-2 rounded-lg hover:bg-brand-blue-light/15 text-xs font-display font-bold uppercase text-brand-navy hover:text-brand-blue-deep transition-colors">
                       Our 6-Step Methodology
                     </Link>
-                    <Link to="/company/expertise" className="block px-3 py-2 rounded-lg hover:bg-[#0F127A] text-xs font-display font-semibold uppercase text-brand-white hover:text-brand-blue-light transition-colors">
+                    <Link to="/company/expertise" className="block px-3 py-2 rounded-lg hover:bg-brand-blue-light/15 text-xs font-display font-bold uppercase text-brand-navy hover:text-brand-blue-deep transition-colors">
                       Expertise & Certifications
                     </Link>
-                    <Link to="/company/standards" className="block px-3 py-2 rounded-lg hover:bg-[#0F127A] text-xs font-display font-semibold uppercase text-brand-white hover:text-brand-blue-light transition-colors">
+                    <Link to="/company/standards" className="block px-3 py-2 rounded-lg hover:bg-brand-blue-light/15 text-xs font-display font-bold uppercase text-brand-navy hover:text-brand-blue-deep transition-colors">
                       Security Standards
                     </Link>
-                    <Link to="/company/careers" className="block px-3 py-2 rounded-lg hover:bg-[#0F127A] text-xs font-display font-semibold uppercase text-brand-white hover:text-brand-blue-light transition-colors">
+                    <Link to="/company/careers" className="block px-3 py-2 rounded-lg hover:bg-brand-blue-light/15 text-xs font-display font-bold uppercase text-brand-navy hover:text-brand-blue-deep transition-colors">
                       Careers & Open Roles
                     </Link>
                   </div>
